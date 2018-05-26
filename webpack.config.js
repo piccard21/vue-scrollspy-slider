@@ -2,11 +2,8 @@ var path = require('path')
 var webpack = require('webpack')
 var merge = require('webpack-merge');
 var config = {
-    entry: './src/main.js',
     output: {
-        path: path.resolve(__dirname, './dist'),
-        publicPath: '/dist/',
-        filename: 'vue-clock.js'
+        path: path.resolve(__dirname, './dist')
     },
     module: {
         rules: [{
@@ -48,22 +45,24 @@ var config = {
             'vue$': 'vue/dist/vue.esm.js'
         },
         extensions: ['*', '.js', '.vue', '.json']
-    }, 
+    },
     performance: {
         hints: false
     },
     devtool: '#eval-source-map',
     externals: {
-        moment: 'moment'
+        'vue-slider-component': 'vue-slider-component',
+        'vue-scrollto': 'vue-scrollto',
+        'vue-lodash': 'vue-lodash'
     }
 }
 module.exports = [
     merge(config, {
         entry: path.resolve(__dirname + '/src/plugin.js'),
         output: {
-            filename: 'vue-clock.min.js',
+            filename: 'vue-scrollspy-slider.min.js',
             libraryTarget: 'window',
-            library: 'VueClock',
+            library: 'VueScrollspySlider',
         },
         plugins: [
             new webpack.DefinePlugin({
@@ -83,11 +82,11 @@ module.exports = [
         ]
     }),
     merge(config, {
-        entry: path.resolve(__dirname + '/src/Clock.vue'),
+        entry: path.resolve(__dirname + '/src/VueScrollspySlider.vue'),
         output: {
-            filename: 'vue-clock.js',
+            filename: 'vue-scrollspy-slider.js',
             libraryTarget: 'umd',
-            library: 'vue-clock',
+            library: 'vue-scrollspy-slider',
             umdNamedDefine: true
         }
     })

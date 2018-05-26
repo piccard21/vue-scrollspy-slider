@@ -4,14 +4,17 @@
   "version": "1.0.0",
   "author": "cafe-serendipity <cafe.serendipity21@gmail.com>",
   "license": "MIT",
-  "main": "dist/vue-clock.js",
+  "main": "dist/vue-scrollspy-slider.js",
   "private": true,
-  "scripts": { 
+  "scripts": {
+    "watch": "webpack --watch --progress --hide-modules",
     "build": "webpack --progress --hide-modules"
   },
-  "dependencies": {
-    "moment": "^2.22.1",
+  "dependencies": { 
     "vue": "^2.5.11",
+    "vue-lodash": "^2.0.0",
+    "vue-scrollto": "^2.11.0",
+    "vue-slider-component": "^2.6.3",
     "webpack-merge": "^4.1.2"
   },
   "browserslist": [
