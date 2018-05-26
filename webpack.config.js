@@ -64,12 +64,7 @@ module.exports = [
             libraryTarget: 'window',
             library: 'VueScrollspySlider',
         },
-        plugins: [
-            new webpack.DefinePlugin({
-                'process.env': {
-                    NODE_ENV: '"production"'
-                }
-            }),
+        plugins: [ 
             new webpack.optimize.UglifyJsPlugin({
                 sourceMap: true,
                 compress: {
