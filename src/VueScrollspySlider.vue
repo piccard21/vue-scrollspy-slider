@@ -59,7 +59,7 @@ export default {
       type: Object,
       default: function () {
         return {
-            container: '#wrapper', 
+            container: "#wrapper", 
             cancelable: false,
             offset: 0,
             x: false,
@@ -80,7 +80,7 @@ export default {
       default: function() {
         return[]
       }
-    } 
+    }
   },
   methods: {
     isElement(val) {
@@ -124,7 +124,7 @@ export default {
       this.setVal(val);  
       this.scrollTo();  
     },
-    scrollTo() { 
+    scrollTo() {  
       VueScrollTo.scrollTo(this.ankers[this.sliderOptions.value], 100, this.scrollOptions) 
       // VueScrollTo.scrollTo(document.getElementById('item-'+this.sliderOptions.value), 100, this.scrollOptions) 
       // this.$scrollTo(document.getElementById('item-'+this.sliderOptions.value), 100, this.scrollOptions) 
@@ -145,20 +145,25 @@ export default {
       let wrapperOffset = $(el).offset();
       let windowHeight = $(el).height();    
 
-      let first = undefined;
+      let first = 1;
       let margin = this.margin; 
+      let self = this;
 
       $(".item").each( function() {
         let offset = $(this).offset(); 
         let height = $(this).height();  
 
         if(offset.top < (wrapperOffset.top+windowHeight) && offset.top >= (wrapperOffset.top+margin) && offset.top > margin) {   
-          first = $(this).attr("itemid")
+          // first = $(this).attr("itemid")
+          // firstEl = this.getElement("#"+$(this).attr(this.ankerAttr));
+          first = Vue._.findIndex(self.ankers, (anker) => {
+            return self.getElement(anker) == this;
+          });
           return false
         }
       });
-   
-      this.setVal(first); 
+      if(first == -1) return;
+      this.setVal(++first);
 
     }); 
   }

@@ -19,8 +19,4 @@ For detailed explanation on how things work, consult the [docs for vue-loader](h
 
 - vanilla
 - slot named
-- #id -> nur zahlen???
-- lodash -> debounce, get, ?
-- ankers
-	- String | el
-	- id | class | el?
+- lodash -> debounce, get, isElement,findIndex?
