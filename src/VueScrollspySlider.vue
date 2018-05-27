@@ -2,18 +2,15 @@
   <div> 
 
         <div class="container"> 
-          <vue-slider @callback="scrollTo"  v-model="sliderOptions.value" v-bind="sliderOptions"> 
+          <vue-slider @callback="scrollTo"  v-model="sliderOptions.value" v-bind="sliderOptions">   
+
             <div class="diy-tooltip" slot="tooltip" slot-scope="{ value }"> 
-              <div id="customLabel" >
-                <div class="popover-wrapper">
-                  <div class="popover">
-                     {{ value }} from {{ sliderOptions.max }}
-                  </div>
-                </div> 
-              </div>
-           </div>
+                 <slot name="tooly" :value="value"></slot>
+            </div>
+
           </vue-slider>
         </div>
+ 
   </div>
 </template>
 
