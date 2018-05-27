@@ -5,6 +5,14 @@ var config = {
     output: {
         path: path.resolve(__dirname, './dist')
     },
+    plugins: [
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jquery: 'jquery',
+            'window.jQuery': 'jquery',
+            jQuery: 'jquery'
+        })
+    ],
     module: {
         rules: [{
             test: /\.css$/,
@@ -42,7 +50,7 @@ var config = {
     },
     resolve: {
         alias: {
-            'vue$': 'vue/dist/vue.esm.js'
+            'vue$': 'vue/dist/vue.esm.js' 
         },
         extensions: ['*', '.js', '.vue', '.json']
     },
@@ -50,11 +58,11 @@ var config = {
         hints: false
     },
     devtool: '#eval-source-map',
-    externals: {
-        'vue-slider-component': 'vue-slider-component',
-        'vue-scrollto': 'vue-scrollto',
-        'vue-lodash': 'vue-lodash'
-    }
+    // externals: {
+    //     'vue-slider-component': 'vue-slider-component',
+    //     'vue-scrollto': 'vue-scrollto',
+    //     'vue-lodash': 'vue-lodash'
+    // }
 }
 module.exports = [
     merge(config, {
@@ -64,7 +72,7 @@ module.exports = [
             libraryTarget: 'window',
             library: 'VueScrollspySlider',
         },
-        plugins: [ 
+        plugins: [
             new webpack.optimize.UglifyJsPlugin({
                 sourceMap: true,
                 compress: {
