@@ -53,7 +53,8 @@ export default {
             cancelable: false,
             offset: 0,
             x: false,
-            y: true
+            y: true,
+            duration: 100
         }
       }
     },
@@ -112,7 +113,7 @@ export default {
       this.scrollTo();  
     },
     scrollTo() {  
-      VueScrollTo.scrollTo(this.ankers[this.sliderOptions.value-1], 100, this.scrollOptions) 
+      VueScrollTo.scrollTo(this.ankers[this.sliderOptions.value-1], this.scrollOptions.duration, this.scrollOptions) 
     },
   },
   data() {  
