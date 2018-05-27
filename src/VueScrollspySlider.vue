@@ -32,7 +32,7 @@ export default {
         return {
           sliderOptions: {
             min: 1,
-            max: 1000,
+            max: this.ankers.length,
             value: 1,
             interval: 1,  
             tooltip:"always", 
