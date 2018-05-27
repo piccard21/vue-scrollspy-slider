@@ -20,4 +20,7 @@ For detailed explanation on how things work, consult the [docs for vue-loader](h
 - vanilla
 - slot named
 - #id -> nur zahlen???
-- lodash -> debounce, get, 
+- lodash -> debounce, get, ?
+- ankers
+	- String | el
+	- id | class | el?
