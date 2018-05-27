@@ -3,8 +3,8 @@
 
         <div class="container"> 
           <vue-slider @callback="scrollTo" v-model="sliderOptions.value" v-bind="sliderOptions">  
-            <div class="diy-tooltip" slot="tooltip" slot-scope="{ value }"> 
-                 <slot name="tooly" v-bind="sliderOptions"></slot>
+            <div slot="tooltip"> 
+                 <slot name="slider-text" v-bind="sliderOptions"></slot>
             </div>
           </vue-slider>
         </div>
