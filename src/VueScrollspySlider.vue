@@ -1,14 +1,12 @@
 <template>
   <div> 
-
-        <div class="container"> 
-          <vue-slider @callback="scrollTo" v-model="sliderOptions.value" v-bind="sliderOptions">  
-            <div slot="tooltip"> 
-                 <slot name="slider-text" v-bind="sliderOptions"></slot>
-            </div>
-          </vue-slider>
+    <div class="container"> 
+      <vue-slider @callback="scrollTo" v-model="sliderOptions.value" v-bind="sliderOptions">  
+        <div slot="tooltip"> 
+             <slot name="slider-text" v-bind="sliderOptions"></slot>
         </div>
- 
+      </vue-slider>
+    </div>
   </div>
 </template>
 
@@ -104,7 +102,7 @@ export default {
       } 
     },
     getContainer() {
-      return this.scrollOptions.container;
+      return this.getElement(this.scrollOptions.container);
     },
     setVal(val) { 
       this.sliderOptions.value = val; 
@@ -121,43 +119,35 @@ export default {
     },
     scrollTo() {  
       VueScrollTo.scrollTo(this.ankers[this.sliderOptions.value-1], 100, this.scrollOptions) 
-      // VueScrollTo.scrollTo(document.getElementById('item-'+this.sliderOptions.value), 100, this.scrollOptions) 
-      // this.$scrollTo(document.getElementById('item-'+this.sliderOptions.value), 100, this.scrollOptions) 
     },
   },
   data() {  
     return {}
   },
   created() { 
-    // this.setVal = this._.debounce(this.setVal, 100) 
-    // this.scrollTo= this._.debounce(this.scrollTo, 100) 
     this.setVal = Vue._.debounce(this.setVal, this.debounce) 
     this.scrollTo= Vue._.debounce(this.scrollTo, this.debounce) 
   },
   mounted() {     
     let el = this.getContainer();
-    $(el).scroll(() => {
-      let wrapperOffset = $(el).offset();
-      let windowHeight = $(el).height();    
 
-      let first = 1;
-      let margin = this.margin; 
-      let self = this;
+    el.addEventListener("scroll", () => { 
+      let cRect = el.getBoundingClientRect();  
+      let containerOffsetTop = cRect.top + document.body.scrollTop;
+      let containerOffsetHeight = el.offsetHeight;
+      let first = -1; 
 
-// item
-      $(".item").each( function() {
-        let offset = $(this).offset(); 
-        let height = $(this).height();  
+      for (let [i, anker] of this.ankers.entries()) {
+          let el = this.getElement(anker) 
+          let rect = el.getBoundingClientRect(); 
+          let offsetTop = rect.top + document.body.scrollTop; 
 
-        if(offset.top < (wrapperOffset.top+windowHeight) && offset.top >= (wrapperOffset.top+margin) && offset.top > margin) {   
-          // first = $(this).attr("itemid")
-          // firstEl = this.getElement("#"+$(this).attr(this.ankerAttr));
-          first = Vue._.findIndex(self.ankers, (anker) => {
-            return self.getElement(anker) == this;
-          });
-          return false
-        }
-      });
+          if(offsetTop < (containerOffsetTop+containerOffsetHeight) && offsetTop >= (containerOffsetTop+this.margin) && offsetTop > this.margin) {   
+            first =  i;
+            break;
+          } 
+      }
+
       if(first == -1) return;
       this.setVal(++first);
 
@@ -165,15 +155,3 @@ export default {
   }
 }
 </script>
-<style> 
-
-.first {
-  background-color: red;
-}
-
-#app {
-  margin: 50px;
-}
- 
-
-</style>
