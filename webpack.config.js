@@ -5,14 +5,6 @@ var config = {
     output: {
         path: path.resolve(__dirname, './dist')
     },
-    plugins: [
-        new webpack.ProvidePlugin({
-            $: 'jquery',
-            jquery: 'jquery',
-            'window.jQuery': 'jquery',
-            jQuery: 'jquery'
-        })
-    ],
     module: {
         rules: [{
             test: /\.css$/,
@@ -40,12 +32,6 @@ var config = {
             test: /\.js$/,
             loader: 'babel-loader',
             exclude: /node_modules/
-        }, {
-            test: /\.(png|jpg|gif|svg)$/,
-            loader: 'file-loader',
-            options: {
-                name: '[name].[ext]?[hash]'
-            }
         }]
     },
     resolve: {
@@ -58,11 +44,11 @@ var config = {
         hints: false
     },
     devtool: '#eval-source-map',
-    // externals: {
-    //     'vue-slider-component': 'vue-slider-component',
-    //     'vue-scrollto': 'vue-scrollto',
-    //     'vue-lodash': 'vue-lodash'
-    // }
+    externals: {
+        'vue-slider-component': 'vue-slider-component',
+        'vue-scrollto': 'vue-scrollto',
+        'vue-lodash': 'vue-lodash'
+    }
 }
 module.exports = [
     merge(config, {
