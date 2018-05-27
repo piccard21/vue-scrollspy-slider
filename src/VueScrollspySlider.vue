@@ -2,12 +2,10 @@
   <div> 
 
         <div class="container"> 
-          <vue-slider @callback="scrollTo"  v-model="sliderOptions.value" v-bind="sliderOptions">   
-
+          <vue-slider @callback="scrollTo" v-model="sliderOptions.value" v-bind="sliderOptions">  
             <div class="diy-tooltip" slot="tooltip" slot-scope="{ value }"> 
-                 <slot name="tooly" :value="value"></slot>
+                 <slot name="tooly" v-bind="sliderOptions"></slot>
             </div>
-
           </vue-slider>
         </div>
  
@@ -146,6 +144,7 @@ export default {
       let margin = this.margin; 
       let self = this;
 
+// item
       $(".item").each( function() {
         let offset = $(this).offset(); 
         let height = $(this).height();  
@@ -167,17 +166,6 @@ export default {
 }
 </script>
 <style> 
-.popover-wrapper {
-  background-color: red;
-  min-width: 15rem;
-  border: none
-}
-.popover{
-  background-color: white;
-  display: inline-block;
-  border: 1px solid lightgrey;
-  padding: 1rem;
-}
 
 .first {
   background-color: red;
