@@ -125,7 +125,7 @@ export default {
       this.scrollTo();  
     },
     scrollTo() {  
-      VueScrollTo.scrollTo(this.ankers[this.sliderOptions.value], 100, this.scrollOptions) 
+      VueScrollTo.scrollTo(this.ankers[this.sliderOptions.value-1], 100, this.scrollOptions) 
       // VueScrollTo.scrollTo(document.getElementById('item-'+this.sliderOptions.value), 100, this.scrollOptions) 
       // this.$scrollTo(document.getElementById('item-'+this.sliderOptions.value), 100, this.scrollOptions) 
     },
