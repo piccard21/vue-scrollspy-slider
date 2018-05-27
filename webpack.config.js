@@ -1,6 +1,8 @@
 var path = require('path')
 var webpack = require('webpack')
 var merge = require('webpack-merge');
+var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+
 var config = {
     output: {
         path: path.resolve(__dirname, './dist')
@@ -31,7 +33,11 @@ var config = {
         }, {
             test: /\.js$/,
             loader: 'babel-loader',
-            exclude: /node_modules/
+            exclude: /node_modules/,
+              'options': {
+                'plugins': ['lodash'],
+                'presets': [['env', { 'modules': false, 'targets': { 'node': 4 } }]]
+              }
         }]
     },
     resolve: {
@@ -46,8 +52,7 @@ var config = {
     devtool: '#eval-source-map',
     externals: {
         'vue-slider-component': 'vue-slider-component',
-        'vue-scrollto': 'vue-scrollto',
-        'vue-lodash': 'vue-lodash'
+        'vue-scrollto': 'vue-scrollto'
     }
 }
 module.exports = [
@@ -59,6 +64,7 @@ module.exports = [
             library: 'VueScrollspySlider',
         },
         plugins: [
+            new LodashModuleReplacementPlugin,  
             new webpack.optimize.UglifyJsPlugin({
                 sourceMap: true,
                 compress: {

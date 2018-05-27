@@ -14,13 +14,10 @@
 
 import Vue from 'vue'
 import vueSlider from 'vue-slider-component' 
-import VueScrollTo from 'vue-scrollto'
-import VueLodash from 'vue-lodash'
-
-const options = { name: '_' }  
-  
-Vue.use(VueScrollTo)
-Vue.use(VueLodash, options) 
+import VueScrollTo from 'vue-scrollto' 
+import _ from 'lodash'
+ 
+Vue.use(VueScrollTo) 
 
 
 export default {
@@ -76,12 +73,9 @@ export default {
     }
   },
   methods: {
-    isElement(val) {
-      return Vue._.isElement(val) 
-    },
     getElement(val) {
       // element
-      if(this.isElement(val)) {
+      if( _.isElement(val)) {
           return val;
       } 
       // id
@@ -125,8 +119,8 @@ export default {
     return {}
   },
   created() { 
-    this.setVal = Vue._.debounce(this.setVal, this.debounce) 
-    this.scrollTo= Vue._.debounce(this.scrollTo, this.debounce) 
+    this.setVal = _.debounce(this.setVal, this.debounce) 
+    this.scrollTo= _.debounce(this.scrollTo, this.debounce) 
   },
   mounted() {     
     let el = this.getContainer();

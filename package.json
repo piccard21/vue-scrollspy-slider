@@ -11,12 +11,14 @@
     "build": "webpack --progress --hide-modules"
   },
   "dependencies": {
+    "babel-plugin-lodash": "^3.3.2",
+    "lodash": "^4.17.10",
+    "lodash-webpack-plugin": "^0.11.5",
     "vue": "^2.5.11",
     "vue-loader": "^13.0.5",
-    "vue-template-compiler": "^2.4.4",
-    "vue-lodash": "^2.0.0",
     "vue-scrollto": "^2.11.0",
-    "vue-slider-component": "^2.6.3"
+    "vue-slider-component": "^2.6.3",
+    "vue-template-compiler": "^2.4.4"
   },
   "browserslist": [
     "> 1%",
@@ -31,7 +33,7 @@
     "css-loader": "^0.28.7",
     "node-sass": "^4.5.3",
     "sass-loader": "^6.0.6",
-    "webpack-merge": "^4.1.2",
-    "webpack": "^3.6.0"
+    "webpack": "^3.6.0",
+    "webpack-merge": "^4.1.2"
   }
 }
