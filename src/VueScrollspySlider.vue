@@ -75,12 +75,16 @@ export default {
   },
   methods: {
     prev() { 
+      if(this.sliderOptions.value > this.sliderOptions.min) {
         this.setVal(--this.sliderOptions.value);  
-        this.scrollTo();
+        this.scrollTo(); 
+      }
     },
     next() { 
+      if(this.sliderOptions.value < this.sliderOptions.max) {
         this.setVal(++this.sliderOptions.value);  
         this.scrollTo();
+      }
     },
     initSlider() { 
         this.$refs.slider.refresh()

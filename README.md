@@ -20,8 +20,7 @@ For detailed explanation on how things work, consult the [docs for vue-loader](h
 - beispiele 
 	- body, div
 	- el, id, cl????
-		- container, noch was
-	- vor, zurück
+		- für container, anker, ...
 	- 3x debounce????
 	- css
 		- packages -> props -> css-els
