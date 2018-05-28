@@ -74,6 +74,14 @@ export default {
     }
   },
   methods: {
+    prev() { 
+        this.setVal(--this.sliderOptions.value);  
+        this.scrollTo();
+    },
+    next() { 
+        this.setVal(++this.sliderOptions.value);  
+        this.scrollTo();
+    },
     initSlider() { 
         this.$refs.slider.refresh()
     },
