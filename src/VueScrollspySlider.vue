@@ -1,7 +1,7 @@
 <template>
-  <div> 
+  <div @mouseover="initSlider"> 
     <div class="container"> 
-      <vue-slider @callback="scrollTo" v-model="sliderOptions.value" v-bind="sliderOptions">  
+      <vue-slider @callback="scrollTo" v-model="sliderOptions.value" v-bind="sliderOptions" ref="slider">  
         <div slot="tooltip"> 
              <slot name="slider-text" v-bind="sliderOptions"></slot>
         </div>
@@ -74,6 +74,9 @@ export default {
     }
   },
   methods: {
+    initSlider() { 
+        this.$refs.slider.refresh()
+    },
     getElement(val) {
       // element
       if( _.isElement(val)) {
@@ -122,6 +125,7 @@ export default {
   created() { 
     this.setVal = _.debounce(this.setVal, this.debounce) 
     this.scrollTo= _.debounce(this.scrollTo, this.debounce) 
+    this.initSlider = _.debounce(this.initSlider, this.debounce) 
   },
   mounted() {     
     let el = this.getContainer();
