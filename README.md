@@ -16,5 +16,14 @@ npm run build
 ```
 
 For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
-  
-- lodash -> debounce, get, isElement
+   
+- beispiele 
+	- body, div
+	- el, id, cl????
+		- container, noch was
+	- vor, zurück
+	- 3x debounce????
+	- css
+		- packages -> props -> css-els
+		- eigenes
+	- erge mit standard
